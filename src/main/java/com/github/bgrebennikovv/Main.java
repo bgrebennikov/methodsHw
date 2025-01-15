@@ -36,9 +36,15 @@ public class Main {
     }
 
     public static int calculateDeliveryDays(int distance) {
-        return (distance > 0 && distance <= 100)
-                ? 1 + (distance > 20 ? 1 : 0) + (distance > 60 ? 1 : 0)
-                : -1;
+        if (distance <= 20) {
+            return 1;
+        } else if (distance <= 60) {
+            return 2;
+        } else if (distance <= 100) {
+            return 3;
+        } else {
+            return -1;
+        }
     }
 
     public static boolean isLeapYear(int year) {
