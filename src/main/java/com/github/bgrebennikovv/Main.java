@@ -47,21 +47,17 @@ public class Main {
 
 
     public static void suggestAppVersion(int clientOS, int clientDeviceYear) {
-        int currentYear = LocalDate.now().getYear(); // Получение текущего года
+        int currentYear = LocalDate.now().getYear();
 
-        if (clientDeviceYear < currentYear) {
-            if (clientDeviceYear < 2015) {
-                System.out.println(clientOS == 0
-                        ? "Установите облегченную версию приложения для iOS по ссылке"
-                        : "Установите облегченную версию приложения для Android по ссылке");
-            } else {
-                System.out.println(clientOS == 0
-                        ? "Установите обычную версию приложения для iOS по ссылке"
-                        : "Установите обычную версию приложения для Android по ссылке");
-            }
-        } else {
+        if (clientDeviceYear >= currentYear) {
             System.out.println("Ваше устройство актуально, установите обычное приложение.");
+            return;
         }
+
+        String appVersion = clientDeviceYear < 2015 ? "облегченную версию" : "обычную версию";
+        String osType = clientOS == 0 ? "для iOS" : "для Android";
+
+        System.out.printf("Установите %s приложения %s по ссылке%n", appVersion, osType);
     }
 
 }
