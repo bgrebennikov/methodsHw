@@ -22,6 +22,23 @@ public class Main {
 
         suggestAppVersion(clientOS, clientDeviceYear);
 
+        // Task 3
+        int deliveryDistance = 95;
+        int deliveryDays = calculateDeliveryDays(deliveryDistance);
+
+        if (deliveryDays > 0) {
+            System.out.printf("Потребуется дней: %d%n", deliveryDays);
+        } else {
+            System.out.println("Доставка на указанное расстояние не осуществляется.");
+        }
+
+
+    }
+
+    public static int calculateDeliveryDays(int distance) {
+        return (distance > 0 && distance <= 100)
+                ? 1 + (distance > 20 ? 1 : 0) + (distance > 60 ? 1 : 0)
+                : -1;
     }
 
     public static boolean isLeapYear(int year) {
